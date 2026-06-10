@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>广西佳昌旺供应链管理有限公司 - 公司简介</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+      color: #2c3e50;
+      line-height: 1.7;
+      background: #fff;
+    }
+
+    /* ===== 导航栏 ===== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      padding: 14px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+      z-index: 100;
+    }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .navbar-brand img { height: 42px; width: 42px; object-fit: contain; border-radius: 10px; }
+    .brand-name { font-size: 20px; font-weight: 700; color: #e67e22; }
+    .brand-name span { color: #27ae60; font-size: 14px; display: block; font-weight: 400; letter-spacing: 1px; opacity: 0.7; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #555; font-size: 15px; transition: color 0.3s; font-weight: 500; }
+    .nav-links a:hover { color: #e67e22; }
+
+    /* ===== Hero 区域 ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(39,174,96,0.88) 0%, rgba(230,126,34,0.85) 100%),
+                  linear-gradient(135deg, rgba(39,174,96,0.88) 0%, rgba(230,126,34,0.85) 100%) center/cover no-repeat;
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; top: -30%; left: -30%;
+      width: 160%; height: 160%;
+      background: radial-gradient(circle at 25% 75%, rgba(255,255,255,0.12) 0%, transparent 45%),
+                  radial-gradient(circle at 75% 25%, rgba(255,200,100,0.1) 0%, transparent 40%);
+      animation: floatBg 10s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+    @keyframes floatBg {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-2%, 1%) rotate(1deg); }
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 760px; }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+      font-size: 14px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 16px; letter-spacing: 2px; line-height: 1.2; }
+    .hero h1 em { font-style: normal; color: #ffe082; }
+    .hero p { font-size: 19px; opacity: 0.92; margin-bottom: 38px; line-height: 1.8; }
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 16px; font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #fff; color: #27ae60;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(0,0,0,0.25);
+    }
+
+    /* ===== 通用 Section ===== */
+    section { padding: 90px 40px; max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      text-align: center;
+      font-size: 34px; font-weight: 700;
+      margin-bottom: 14px; color: #1a202c;
+    }
+    .section-subtitle {
+      text-align: center; color: #888;
+      font-size: 17px; margin-bottom: 56px;
+    }
+
+    /* ===== 关于我们 ===== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-text h3 { font-size: 26px; margin-bottom: 18px; color: #2d3748; }
+    .about-text p { color: #666; margin-bottom: 16px; font-size: 15.5px; line-height: 1.8; }
+    .about-highlight {
+      background: linear-gradient(135deg, #f0fff4, #fff8f0);
+      border-left: 4px solid #27ae60;
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 20px;
+      font-style: italic;
+      color: #555;
+      font-size: 15px;
+    }
+    .about-visual img {
+      width: 100%; height: 340px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(39,174,96,0.2);
+    }
+
+    /* ===== 核心业务 ===== */
+    .services-section { background: #fafbfc; padding: 90px 40px; max-width: none; }
+    .services-section .section-inner { max-width: 1100px; margin: 0 auto; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 38px 28px;
+      text-align: center;
+      transition: all 0.35s ease;
+      border: 1px solid #eee;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 16px 16px 0 0;
+    }
+    .service-card:nth-child(1)::before { background: linear-gradient(90deg, #27ae60, #2ecc71); }
+    .service-card:nth-child(2)::before { background: linear-gradient(90deg, #e67e22, #f39c12); }
+    .service-card:nth-child(3)::before { background: linear-gradient(90deg, #2980b9, #3498db); }
+    .service-card:nth-child(4)::before { background: linear-gradient(90deg, #8e44ad, #9b59b6); }
+    .service-card:nth-child(5)::before { background: linear-gradient(90deg, #c0392b, #e74c3c); }
+    .service-card:nth-child(6)::before { background: linear-gradient(90deg, #16a085, #1abc9c); }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.1);
+    }
+    .service-icon {
+      width: 68px; height: 68px;
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 30px;
+    }
+    .service-card:nth-child(1) .service-icon { background: #eef9f2; }
+    .service-card:nth-child(2) .service-icon { background: #fef6ed; }
+    .service-card:nth-child(3) .service-icon { background: #eef4fb; }
+    .service-card:nth-child(4) .service-icon { background: #f5eef8; }
+    .service-card:nth-child(5) .service-icon { background: #fef0ef; }
+    .service-card:nth-child(6) .service-icon { background: #eef8f6; }
+    .service-card h3 { font-size: 18px; margin-bottom: 10px; color: #2d3748; font-weight: 600; }
+    .service-card p { color: #777; font-size: 14.5px; line-height: 1.7; }
+
+    /* ===== 品牌优势 / 数据展示 ===== */
+    .stats-section {
+      background: linear-gradient(135deg, #27ae60 0%, #1e8449 50%, #e67e22 100%);
+      padding: 70px 40px;
+      color: #fff;
+    }
+    .stats-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 24px; }
+    .stat-item { flex: 1; min-width: 160px; }
+    .stat-num { font-size: 46px; font-weight: 800; display: block; line-height: 1.2; }
+    .stat-label { font-size: 14.5px; opacity: 0.9; margin-top: 4px; }
+
+    /* ===== 产品展示 ===== */
+    .products-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .products-showcase img {
+      width: 100%; height: 380px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .product-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .product-tag {
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 13px; font-weight: 500;
+      background: #f0fdf4; color: #27ae60;
+      border: 1px solid #bbf7d0;
+    }
+
+    /* ===== 资质荣誉 ===== */
+    .honors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .honor-item {
+      background: #fffdf7;
+      border: 1px solid #f5e6c8;
+      border-radius: 12px;
+      padding: 28px 18px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .honor-item:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(230,126,34,0.15); }
+    .honor-icon { font-size: 36px; margin-bottom: 10px; }
+    .honor-item h4 { font-size: 15px; color: #333; margin-bottom: 4px; }
+    .honor-item p { font-size: 13px; color: #999; }
+
+    /* ===== 联系我们 ===== */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-info h3 { font-size: 24px; margin-bottom: 20px; color: #2d3748; }
+    .contact-item { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; color: #666; font-size: 15px; }
+    .contact-item .ci-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, #eef9f2, #fff8f0);
+      color: #27ae60;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 15px;
+      margin-bottom: 14px;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: #27ae60; box-shadow: 0 0 0 3px rgba(39,174,96,0.1); }
+    .contact-form textarea { resize: vertical; min-height: 110px; }
+    .btn-submit {
+      width: 100%; padding: 15px; border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #27ae60, #e67e22);
+      color: #fff; font-size: 16px; font-weight: 600;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .btn-submit:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(39,174,96,0.3); }
+
+    /* ===== 页脚 ===== */
+    footer {
+      background: #1a2332; color: #a0aec0;
+      text-align: center;
+      padding: 36px 24px;
+      font-size: 14px;
+    }
+    footer .footer-logo { font-size: 20px; font-weight: 700; color: #e67e22; margin-bottom: 8px; }
+    footer .footer-logo span { color: #27ae60; }
+    footer a { color: #a0aec0; text-decoration: none; }
+    footer a:hover { color: #fff; }
+    .footer-divider { width: 40px; height: 2px; background: linear-gradient(90deg, #27ae60, #e67e22); margin: 16px auto; border-radius: 1px; }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .honors-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 34px; letter-spacing: 1px; }
+      .hero p { font-size: 16px; }
+      .about-grid, .contact-grid, .products-showcase { grid-template-columns: 1fr; gap: 30px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-inner { flex-direction: column; gap: 28px; }
+      .honors-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 60px 24px; }
+      .services-section { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== 导航栏 ========== -->
+  <nav class="navbar">
+    <a href="#home" class="navbar-brand">
+      <img  alt="佳昌旺 Logo">
+      <div class="brand-name">佳昌旺<span>JIACHANGWANG</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#services">核心业务</a></li>
+      <li><a href="#products">产品展示</a></li>
+      <li><a href="#honors">资质荣誉</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+  </nav>
+
+  <!-- ========== Hero 首屏 ========== -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🌿 广西优质水果供应链服务商</div>
+      <h1>佳<em>昌</em>旺<br>鲜果通达 · 链动全球</h1>
+      <p>专注热带水果全产业链运营，从果园到餐桌，<br>以专业供应链服务连接产地与市场，让新鲜触手可及。</p>
+      <a href="#about" class="btn btn-primary">了解佳昌旺 →</a>
+    </div>
+  </section>
+
+  <!-- ========== 关于我们 ========== -->
+  <section id="about">
+    <h2 class="section-title">关于佳昌旺</h2>
+    <p class="section-title" style="font-size:17px;color:#888;font-weight:400;margin-top:-10px;margin-bottom:48px;">深耕广西 · 服务全国 · 链接世界</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <h3>广西佳昌旺供应链管理有限公司</h3>
+        <p>公司成立于 <strong>2018年9月</strong>，总部位于广西壮族自治区南宁市经济技术开发区，是一家专注于<strong>农副食品加工业及水果供应链管理</strong>的现代化企业。注册资本 <strong>300万元人民币</strong>，实缴资本 <strong>228万元人民币</strong>。</p>
+        <p>公司主营业务涵盖<strong>新鲜水果批发与零售、农副产品销售、水果种植、供应链管理服务、冷链物流仓储、包装设计、互联网销售等</strong>全产业链环节。拥有出境水果果园注册登记资质，并自主研发了<strong>"水果清洗分拣自动化系统"</strong>软件著作权。</p>
+        <p>目前，公司已对外投资 <strong>4家企业</strong>，包括与中农联联合组建的<strong>浦北佳昌旺供应链有限公司</strong>，整合全国流通网络、智慧农批平台和海外渠道资源。2025年荔枝电商季，仅用 <strong>15天完成销售90万斤，销售额达675万元</strong>。</p>
+        <div class="about-highlight">"让每一颗好果子都找到对的市场，让每一位果农都获得应有的回报。" —— 佳昌旺使命</div>
+      </div>
+      <div class="about-visual">
+        <img  alt="佳昌旺办公环境">
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 核心业务 ========== -->
+  <div class="services-section" id="services">
+    <div class="section-inner">
+      <h2 class="section-title">核心业务</h2>
+      <p class="section-subtitle">覆盖水果产业全链条的一站式供应链解决方案</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🍎</div>
+          <h3>新鲜水果批发零售</h3>
+          <p>主营芒果、荔枝等广西优质热带水果的批发与零售，整合产地直采资源，保障果品新鲜度与品质稳定。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚛</div>
+          <h3>供应链管理与物流</h3>
+          <p>提供从产地到销地的全程供应链管理服务，包括运输代理、国内货物配送、双仓冷链物流体系搭建。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🌱</div>
+          <h3>水果种植基地合作</h3>
+          <p>通过订单农业模式与果农深度合作，建立标准化种植基地，实现从源头把控品质，溢价收购助农增收。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📦</div>
+          <h3>包装设计与加工</h3>
+          <p>提供专业的品牌包装设计与定制化包装服务，结合水果特性设计保鲜方案，提升产品附加值与品牌形象。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3>电商与互联网销售</h3>
+          <p>布局多平台电商渠道，整合直播带货、社群营销等方式，打通线上线下一体化的新零售通路。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">✈️</div>
+          <h3>出口贸易与海外渠道</h3>
+          <p>拥有出境水果果园注册登记资质，依托海外渠道资源拓展国际市场，推动广西优质水果走向世界。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 数据成就 ========== -->
+  <div class="stats-section">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num">8+</span>
+        <span class="stat-label">年行业经验</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">300万</span>
+        <span class="stat-label">注册资本（元）</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">14个</span>
+        <span class="stat-label">注册商标</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">90万斤</span>
+        <span class="stat-label">单季荔枝销量</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4家</span>
+        <span class="stat-label">投资企业</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 产品展示 ========== -->
+  <section id="products">
+    <h2 class="section-title">主打产品</h2>
+    <p class="section-subtitle">源自广西沃土的新鲜馈赠</p>
+    <div class="products-showcase">
+      <img  alt="广西优质热带水果">
+      <div>
+        <h3 style="font-size:24px;margin-bottom:16px;color:#2d3748;">广西优质热带水果系列</h3>
+        <p style="color:#666;font-size:15.5px;line-height:1.8;margin-bottom:12px;">
+          广西地处亚热带季风气候区，光照充足、雨量充沛，是中国重要的热带水果生产基地。佳昌旺精选广西各产区的优质果品，从百色芒果到钦州荔枝，从田间采摘到分拣包装，每一个环节严格把控。
+        </p>
+        <p style="color:#666;font-size:15.5px;line-height:1.8;margin-bottom:12px;">
+          我们的自研<strong>"水果清洗分拣自动化系统"</strong>实现了标准化品控流程，确保每颗水果都经过严格的筛选分级，以最佳状态送达消费者手中。
+        </p>
+        <div class="product-tags">
+          <span class="product-tag">🥭 百色芒果</span>
+          <span class="product-tag">🍒 钦州荔枝</span>
+          <span class="product-tag">🍊 柑橘类</span>
+          <span class="product-tag">🍌 香蕉</span>
+          <span class="product-tag">🫐 其他时令鲜果</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 资质荣誉 ========== -->
+  <section id="honors" style="background:#fffcf5;padding:90px 40px;max-width:none;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <h2 class="section-title">资质与实力</h2>
+      <p class="section-subtitle">多年积累的品牌资产与技术沉淀</p>
+      <div class="honors-grid">
+        <div class="honor-item">
+          <div class="honor-icon">®️</div>
+          <h4>14个注册商标</h4>
+          <p>拥有多项品牌商标知识产权</p>
+        </div>
+        <div class="honor-item">
+          <div class="honor-icon">💻</div>
+          <h4>软件著作权</h4>
+          <p>水果清洗分拣自动化系统</p>
+        </div>
+        <div class="honor-item">
+          <div class="honor-icon">📋</div>
+          <h4>出境资质许可</h4>
+          <p>出境水果果园注册登记</p>
+        </div>
+        <div class="honor-item">
+          <div class="honor-icon">🤝</div>
+          <h4>战略合作伙伴</h4>
+          <p>中农联等大型企业联合投资</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 联系我们 ========== -->
+  <section id="contact">
+    <h2 class="section-title">联系我们</h2>
+    <p class="section-subtitle">欢迎洽谈合作，共创甜蜜事业</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>联系方式</h3>
+        <div class="contact-item"><span class="ci-icon">📍</span> 广西南宁市经济技术开发区海城路北侧（顺丰分拨中心）A栋2层东面</div>
+        <div class="contact-item"><span class="ci-icon">🏢</span> 广西佳昌旺供应链管理有限公司</div>
+        <div class="contact-item"><span class="ci-icon">👤</span> 法定代表人：王日东</div>
+        <div class="contact-item"><span class="ci-icon">📅</span> 成立日期：2018 年 09 月 25 日</div>
+        <div class="contact-item"><span class="ci-icon">💰</span> 注册资本：300 万元人民币</div>
+        <div class="contact-item"><span class="ci-icon">🕐</span> 工作时间：周一至周五 9:00 – 18:00</div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('感谢您的留言！佳昌旺会尽快与您联系。');">
+        <input type="text" placeholder="您的姓名 / 公司名称" required>
+        <input type="tel" placeholder="联系电话">
+        <input type="email" placeholder="电子邮箱">
+        <textarea placeholder="请输入您的合作需求或留言..." required></textarea>
+        <button type="submit" class="btn-submit">提交留言</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== 页脚 ========== -->
+  <footer>
+    <div class="footer-logo">佳<em style="color:#e67e22;font-style:normal;">昌</em>旺 <span>|</span> JIACHANGWANG</div>
+    <div class="footer-divider"></div>
+    <p>广西佳昌旺供应链管理有限公司 &copy; 2018-2026 All Rights Reserved.</p>
+    <p style="margin-top:8px;font-size:13px;">统一社会信用代码：91450100MA5NE5U24B &nbsp;|&nbsp; 南宁市江南区 &nbsp;|&nbsp; 农副食品加工业</p>
+  </footer>
+
+</body>
+</html>
